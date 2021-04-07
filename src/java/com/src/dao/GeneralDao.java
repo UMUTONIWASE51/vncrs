@@ -3,65 +3,74 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.src.dao;
 
 import com.src.db.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+
 /**
  *
  * @author Planet Innovation
  */
-public class GeneralDao<Y>{
+public class GeneralDao<Y> {
+
     private Class<Y> type;
+
     public GeneralDao(Class<Y> type) {
         this.type = type;
     }
-    Session session= null;
-    public void create(Y obj){
+    Session session = null;
+
+    public Y create(Y obj) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(obj);
+        Object newObj = session.save(obj);
         session.getTransaction().commit();
         session.close();
+        return (Y) newObj;
     }
-    public void update(Y obj){
+
+    public void update(Y obj) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(obj);
         session.getTransaction().commit();
         session.close();
     }
-    public void delete(Y obj){
+
+    public void delete(Y obj) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(obj);
         session.getTransaction().commit();
         session.close();
     }
-    public Y findById(String id){
+
+    public Y findById(Integer id) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Y obj = (Y) session.get(type,id);
+        Y obj = (Y) session.get(type, id);
         session.getTransaction().commit();
         session.close();
         return obj;
     }
-    public Y findByName(String name){
+
+    public Y findByName(String name) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Y obj = (Y) session.get(type,name);
+        Y obj = (Y) session.get(type, name);
         session.getTransaction().commit();
         session.close();
         return obj;
     }
-    public List<Y> findAll(){
+
+    public List<Y> findAll() {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        List<Y> obj = session.createCriteria(type.getName()).list();
+        List<Y> resultList = session.createCriteria(type.getName()).list();
         session.getTransaction().commit();
         session.close();
-        return obj;
+        return resultList;
     }
 }
