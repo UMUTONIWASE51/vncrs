@@ -3,35 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.src.service;
 
 import com.src.dao.GeneralDao;
 import com.src.domain.Person;
+import com.src.domain.SocialClass;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Planet Innovation
  */
-public class RegistrationServiceImpl implements RegistrationService{
+public class RegistrationServiceImpl implements RegistrationService {
 
-    private Person person = new Person("", "", new Date(), "", "", "", "");
-    GeneralDao<Person> personDao = new GeneralDao<>(Person.class);
+    //private Person person = new Person("", "", new Date(), "", "", "", "");
+    GeneralDao personDao = new GeneralDao(Person.class);
+    GeneralDao socialClassDao = new GeneralDao(SocialClass.class);
 
     public RegistrationServiceImpl() {
     }
-    
-    
-    
-    private boolean isExistPerson(String nid){
-        if(personDao.findById(nid) == null){
-            return false;
-        }
-        
-        return true;
-    }
-    
+
 //    public String generateSocialClass(Property prop){
 //        
 //        if(prop.isCar() && prop.isHouse() && prop.isFurnitures()){
@@ -44,29 +36,85 @@ public class RegistrationServiceImpl implements RegistrationService{
 //           return "poor"; 
 //        }
 //    }
-    
-    
+//    @Override
+//    public Person registerNewPerson(String nid) {
+//        
+//        try {
+//            if(isExistPerson(nid)){
+//                throw new RuntimeException("Person Arleady Registered");
+//            }
+//            
+////            String socialClass = generateSocialClass(prop);
+////            String previousCountry = prevC.getCode();
+//            
+//            person = new Person("", "", new Date(), "", "", "", "");
+//            
+//            Person retPerson = new Person("", "", new Date(), "", "", "", "");
+//            personDao.create(person);
+//            if(retPerson != null){
+//                return retPerson;
+//            }
+//            throw new RuntimeException("System Message: validation Error");
+//        } catch (Exception e) {
+//            throw new RuntimeException("Internal Server Error: "+e.getMessage());
+//        }
+//    }
     @Override
-    public Person registerNewPerson(String nid) {
-        
-        try {
-            if(isExistPerson(nid)){
-                throw new RuntimeException("Person Arleady Registered");
-            }
-            
-//            String socialClass = generateSocialClass(prop);
-//            String previousCountry = prevC.getCode();
-            
-            person = new Person("", "", new Date(), "", "", "", "");
-            
-            Person retPerson = new Person("", "", new Date(), "", "", "", "");
-            personDao.create(person);
-            if(retPerson != null){
-                return retPerson;
-            }
-            throw new RuntimeException("System Message: validation Error");
-        } catch (Exception e) {
-            throw new RuntimeException("Internal Server Error: "+e.getMessage());
+    public Person createNewPerson(Person person) {
+        Object newPerson = personDao.create(person);
+        if (newPerson != null) {
+            return (Person) newPerson;
         }
+        throw new RuntimeException("System Message: validation Error");
+    }
+
+    @Override
+    public void updatePerson(Person person) {
+        personDao.update(person);
+    }
+
+    @Override
+    public Person getPersonById(Integer personId) {
+        return (Person) personDao.findById(personId);
+    }
+
+    @Override
+    public List<Person> getAllPeople() {
+        return personDao.findAll();
+    }
+
+    @Override
+    public void deletePerson(Person person) {
+        personDao.delete(person);
+    }
+
+    @Override
+    public SocialClass createSocialClass(SocialClass socialClass) {
+        
+        Object newClass = socialClassDao.create(socialClass);
+        if (newClass != null) {
+            return (SocialClass) newClass;
+        }
+        throw new RuntimeException("System Message: validation Error");
+    }
+
+    @Override
+    public void updateSocialClass(SocialClass socialClass) {
+        socialClassDao.update(socialClass);
+    }
+
+    @Override
+    public SocialClass getSocialClassById(Integer classId) {
+        return (SocialClass) socialClassDao.findById(classId);
+    }
+
+    @Override
+    public List<SocialClass> getAllClasses() {
+        return socialClassDao.findAll();
+    }
+
+    @Override
+    public void deleteSocialClass(SocialClass socialclass) {
+        socialClassDao.delete(socialclass);
     }
 }
