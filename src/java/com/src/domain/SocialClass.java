@@ -5,6 +5,7 @@
  */
 package com.src.domain;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,7 +15,7 @@ import javax.persistence.Id;
  * @author Planet Innovation
  */
 @Entity
-public class SocialClass {
+public class SocialClass implements Serializable {
 
     @Id
     private Integer classId;
