@@ -3,6 +3,7 @@
  */
 package com.src.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.Id;
  * @author Planet Innovation
  */
 @Entity
-public class Person {
+public class Person implements Serializable{
 
     @Id
     private Integer personId;
