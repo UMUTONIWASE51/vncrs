@@ -7,6 +7,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Entity to handle users for authentication
@@ -21,6 +22,7 @@ private static  final long serialVersionUID = 1L;
     private Integer userId;
     private String username;
     private String password;
+    @ManyToOne
     private Person person;
 
     /**
