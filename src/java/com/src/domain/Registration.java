@@ -3,9 +3,11 @@
  */
 package com.src.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -14,17 +16,18 @@ import javax.persistence.OneToMany;
  * @author Planet Innovation
  */
 @Entity
-public class Registration {
+public class Registration implements Serializable{
 
     @Id
+    @GeneratedValue
     private Integer registrationId;
     private String village;
     private Date registrationDate;
     private Person familyChief;
     private SocialClass socialClass;
-    @OneToMany
+    //@OneToMany
     private ArrayList<Person> members = new ArrayList<>();
-    @OneToMany
+    //@OneToMany
     private ArrayList<Belonging> belongings = new ArrayList<>();
 
     public Registration(Integer registrationId, String village, Date registrationDate, Person familyChief, SocialClass socialClass) {
