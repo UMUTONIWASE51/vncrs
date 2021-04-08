@@ -7,7 +7,10 @@ package com.src.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Ibyiciro by'ubudehe nk'uko biri mu Rwanda (upper, middle, working, poor)
@@ -18,6 +21,8 @@ import javax.persistence.Id;
 public class SocialClass implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "auto_gen", sequenceName = "A")
     private Integer classId;
     private String description;
 
