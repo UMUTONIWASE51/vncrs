@@ -4,6 +4,7 @@
 package com.src.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 public class Users {
 
     @Id
+    @GeneratedValue
     private Integer userId;
     private String username;
     private String password;
