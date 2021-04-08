@@ -3,7 +3,9 @@
  */
 package com.src.domain;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -12,9 +14,10 @@ import javax.persistence.Id;
  * @author Planet Innovation
  */
 @Entity
-public class Belonging {
+public class Belonging implements Serializable{
 
     @Id
+    @GeneratedValue
     private Integer belongingId;
     private String name;
     private String type;
