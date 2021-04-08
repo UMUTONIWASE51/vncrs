@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
  */
 @Entity
 public class SocialClass implements Serializable {
-
+private static  final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "auto_gen", sequenceName = "A")
