@@ -5,8 +5,11 @@
  */
 package com.src.service;
 
+import com.src.domain.Belonging;
 import com.src.domain.Person;
+import com.src.domain.Registration;
 import com.src.domain.SocialClass;
+import com.src.domain.Users;
 import java.util.List;
 
 /**
@@ -58,11 +61,128 @@ public interface RegistrationService {
     
     /***************************** SOCIAL CLASS ******************************/
     
+    /**
+     * 
+     * @param socialClass the social class object to be saved
+     * @return 
+     */
     public SocialClass createSocialClass(SocialClass socialClass);
+    
+    /**
+     * 
+     * @param socialClass the social class object to be edited
+     */
     public void updateSocialClass(SocialClass socialClass);
+    
+    /**
+     * 
+     * @param classId the social class Id 
+     * @return the social class matching the ID
+     */
     public SocialClass getSocialClassById(Integer classId);
+    /**
+     * gets all existing classes from the DB
+     * @return 
+     */
     public List<SocialClass> getAllClasses();
+    /**
+     * 
+     * @param socialclass the social class to be deleted
+     */
     public void deleteSocialClass(SocialClass socialclass);
     
     /************************************************************************/
+    
+    /***************************** BELONGING ******************************/
+    /**
+     * 
+     * @param belonging the belonging to be saved in DB
+     * @return 
+     */
+    public Belonging createBelonging(Belonging belonging);
+    /**
+     * 
+     * @param belonging the belonging to be updated
+     */
+   
+    public void updateBelonging(Belonging belonging);
+    /**
+     * 
+     * @param belongingId the belonging
+     * @return the belonging matching the ID 
+     */
+    public Belonging getBelongingById(Integer belongingId);
+    /**
+     * 
+     * @return all the existing belongings from the DB
+     */
+    public List<Belonging> getAllBelongings();
+    /**
+     * 
+     * @param belonging to be deleted 
+     */
+    public void deleteBelonging(Belonging belonging);
+    
+    /************************************************************************/
+    /***************************** REGISTATION ******************************/
+    /**
+     * 
+     * @param registration
+     * @return 
+     */
+    public Registration createRegistration(Registration registration);
+    /**
+     * 
+     * @param registration 
+     */
+    public void updateRegistration(Registration registration);
+    /**
+     * 
+     * @param registrationId 
+     * @return the registration matching the ID
+     */
+    public Registration getRegistrationById(Integer registrationId);
+    /**
+     * 
+     * @return all registered families form the DB
+     */
+    public List<Registration> getAllRegistrations();
+    /**
+     * 
+     * @param registration 
+     */
+    public void deleteRegistration(Registration registration);
+    
+    /************************************************************************/
+     /***************************** USERS ******************************/
+    /**
+     * 
+     * @param user
+     * @return 
+     */
+    public Users createNewUser(Users user);
+            /**
+             * 
+             * @param user 
+             */
+    public void updateUser(Users user);
+    /**
+     * 
+     * @param userId
+     * @return 
+     */
+    public Users getUserById(Integer  userId);
+    /**
+     * 
+     * @return 
+     */
+    public List<Users> getAllUsers();
+    /**
+     * 
+     * @param user 
+     */
+    public void deleteUser(Users user);
+    
+    /************************************************************************/
+    
 }
