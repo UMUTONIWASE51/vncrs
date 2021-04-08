@@ -6,9 +6,11 @@
 package com.src.service;
 
 import com.src.dao.GeneralDao;
+import com.src.domain.Belonging;
 import com.src.domain.Person;
+import com.src.domain.Registration;
 import com.src.domain.SocialClass;
-import java.util.Date;
+import com.src.domain.Users;
 import java.util.List;
 
 /**
@@ -20,6 +22,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     //private Person person = new Person("", "", new Date(), "", "", "", "");
     GeneralDao personDao = new GeneralDao(Person.class);
     GeneralDao socialClassDao = new GeneralDao(SocialClass.class);
+    GeneralDao belongingDao = new GeneralDao(Belonging.class);
+    GeneralDao registrationDao = new GeneralDao(Registration.class);
+    GeneralDao usersDao = new GeneralDao(Users.class);
+    
 
     public RegistrationServiceImpl() {
     }
@@ -117,4 +123,96 @@ public class RegistrationServiceImpl implements RegistrationService {
     public void deleteSocialClass(SocialClass socialclass) {
         socialClassDao.delete(socialclass);
     }
+    
+     @Override
+    public Belonging createBelonging(Belonging belonging) {
+        
+        Object newBelonging = belongingDao.create(belonging);
+        if (newBelonging != null) {
+            return (Belonging) newBelonging;
+        }
+        throw new RuntimeException("System Message: validation Error");
+    }
+
+    @Override
+    public void updateBelonging(Belonging belonging) {
+       belongingDao.update(belonging);
+    }
+
+    @Override
+    public Belonging getBelongingById(Integer belongingId) {
+        return (Belonging) belongingDao.findById(belongingId);
+    }
+
+    @Override
+    public List<Belonging> getAllBelongings() {
+        return belongingDao.findAll();
+    }
+
+    @Override
+    public void deleteBelonging(Belonging belonging) {
+        belongingDao.delete(belonging);
+    }
+    
+    @Override
+    public Registration createRegistration(Registration registration) {
+        Object newRegistration  = registrationDao.create(registration);
+        if (newRegistration != null) {
+            return (Registration) newRegistration;
+        }
+        throw new RuntimeException("System Message: validation Error");
+    }
+
+    @Override
+    public void updateRegistration(Registration registration) {
+        registrationDao.update(registration);
+    }
+
+    @Override
+    public Registration getRegistrationById(Integer registrationId) {
+        return (Registration) registrationDao.findById(registrationId);
+    }
+
+    @Override
+    public List<Registration> getAllRegistrations() {
+        return registrationDao.findAll();
+    }
+
+    @Override
+    public void deleteRegistration(Registration registration) {
+        registrationDao.delete(registration);
+    }
+    
+    @Override
+    public Users createNewUser(Users users) {
+        
+        Object newUsers = usersDao.create(users);
+        if (newUsers != null) {
+            return (Users) newUsers;
+        }
+        throw new RuntimeException("System Message: validation Error");
+    }
+
+    @Override
+    public void updateUser(Users users) {
+        usersDao.update(users);
+    }
+
+    @Override
+    public Users getUserById(Integer userId) {
+        return (Users) usersDao.findById(userId);
+    }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return usersDao.findAll();
+    }
+
+    @Override
+    public void deleteUser(Users users) {
+        usersDao.delete(users);
+    }
+    
+     
+
 }
