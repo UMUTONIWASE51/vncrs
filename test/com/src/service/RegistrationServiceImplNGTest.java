@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.src.service;
+import com.src.dao.GeneralDao;
 import com.src.domain.Person;
+import com.src.domain.SocialClass;
 import java.util.Date;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -16,26 +18,33 @@ import org.testng.annotations.Test;
  */
 public class RegistrationServiceImplNGTest {
 
-    String nid = "1199800078";
-    Person person = new Person("", "", new Date(), "", "", "", "");
-    RegistrationService registrationService = new RegistrationServiceImpl();
+    private String nid;
+    private Person person;
+    private SocialClass socialStatus;
+    private RegistrationService service;
 
     public RegistrationServiceImplNGTest() {
     }
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
+        nid = "1199800078";
+        person = new Person("Umutoniwas", "Daphnet", new Date(), "Female", "1199865656565656", "larsonbitch@gmail.com", "07887777777");
+        socialStatus = new SocialClass("Upper");
+        service = new RegistrationServiceImpl();
     }
 
     @Test
     public void testGenerateSocialClass() {
-
+        service.createSocialClass(socialStatus);
+        SocialClass social = service.getSocialClassById(1);
+        Assert.assertEquals(social.getDescription(), "Upper");
     }
 
     @Test
     public void testRegisterNewPerson() {
-        person = registrationService.registerNewPerson(nid);
-        Assert.assertEquals(person.getNid(), nid);
+        Person newPerson = service.createNewPerson(person);
+        Assert.assertEquals(newPerson.getNid(), "1199865656565656");
     }
 
     @Test
@@ -44,14 +53,6 @@ public class RegistrationServiceImplNGTest {
 
     @Test
     public void testSetPerson() {
-    }
-
-    @Test
-    public void testGetChildrens() {
-    }
-
-    @Test
-    public void testSetChildrens() {
     }
 
 }
