@@ -29,6 +29,8 @@ private static  final long serialVersionUID = 1L;
     private String email;
     private String phone;
 
+    public Person(){}
+    
     /**
      * @param firstName
      * @param lastName

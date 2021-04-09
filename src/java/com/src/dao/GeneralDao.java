@@ -22,13 +22,12 @@ public class GeneralDao<Y> {
     }
     Session session = null;
 
-    public Y create(Y obj) {
+    public void create(Y obj) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Object newObj = session.save(obj);
+        session.save(obj);
         session.getTransaction().commit();
         session.close();
-        return (Y) newObj;
     }
 
     public void update(Y obj) {

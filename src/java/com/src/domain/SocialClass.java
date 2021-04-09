@@ -21,10 +21,12 @@ import javax.persistence.SequenceGenerator;
 public class SocialClass implements Serializable {
 private static  final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "auto_gen", sequenceName = "A")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name = "auto_gen", sequenceName = "A")
     private Integer classId;
     private String description;
+    
+    public SocialClass(){}
 
     public SocialClass(String description) {
         this.description = description;

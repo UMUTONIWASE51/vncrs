@@ -7,7 +7,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity to handle users for authentication
@@ -15,21 +18,26 @@ import javax.persistence.ManyToOne;
  * @author Planet Innovation
  */
 @Entity
-public class Users implements Serializable{
-private static  final long serialVersionUID = 1L;
+@Table (name="users", uniqueConstraints={@UniqueConstraint(columnNames = "username")})
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer userId;
     private String username;
     private String password;
     @ManyToOne
+    @JoinColumn(name="person_id")
     private Person person;
+    
+    public User(){}
 
     /**
      * @param username
      * @param password
      */
-    public Users(String username, String password, Person person) {
+    public User(String username, String password, Person person) {
         this.username = username;
         this.password = password;
         this.person = person;

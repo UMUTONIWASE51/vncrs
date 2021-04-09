@@ -4,15 +4,20 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Village</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/vncrs_db</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">larson</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.show_sql">true</property>
     <mapping class="com.src.domain.Belonging"/>
     <mapping class="com.src.domain.Person"/>
     <mapping class="com.src.domain.Registration"/>
     <mapping class="com.src.domain.SocialClass"/>
-    <mapping class="com.src.domain.Users"/>
+    <mapping class="com.src.domain.User"/>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <!-- Enable Hibernate's automatic session context management -->
+    <property name="current_session_context_class">thread</property>
+    <!-- Disable the second-level cache  -->
+    <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
   </session-factory>
 </hibernate-configuration>

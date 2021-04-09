@@ -9,7 +9,7 @@ import com.src.domain.Belonging;
 import com.src.domain.Person;
 import com.src.domain.Registration;
 import com.src.domain.SocialClass;
-import com.src.domain.Users;
+import com.src.domain.User;
 import java.util.List;
 
 /**
@@ -24,9 +24,8 @@ public interface RegistrationService {
      * Create a new Person to be saved into DB
      *
      * @param person the Person object to be saved
-     * @return the newly created Person object with its ID
      */
-    public Person createNewPerson(Person person);
+    public void createNewPerson(Person person);
 
     /**
      * Edits existing person
@@ -64,9 +63,8 @@ public interface RegistrationService {
     /**
      * 
      * @param socialClass the social class object to be saved
-     * @return 
      */
-    public SocialClass createSocialClass(SocialClass socialClass);
+    public void createSocialClass(SocialClass socialClass);
     
     /**
      * 
@@ -97,9 +95,8 @@ public interface RegistrationService {
     /**
      * 
      * @param belonging the belonging to be saved in DB
-     * @return 
      */
-    public Belonging createBelonging(Belonging belonging);
+    public void createBelonging(Belonging belonging);
     /**
      * 
      * @param belonging the belonging to be updated
@@ -128,9 +125,8 @@ public interface RegistrationService {
     /**
      * 
      * @param registration
-     * @return 
      */
-    public Registration createRegistration(Registration registration);
+    public void createRegistration(Registration registration);
     /**
      * 
      * @param registration 
@@ -158,30 +154,29 @@ public interface RegistrationService {
     /**
      * 
      * @param user
-     * @return 
      */
-    public Users createNewUser(Users user);
+    public void createNewUser(User user);
             /**
              * 
              * @param user 
              */
-    public void updateUser(Users user);
+    public void updateUser(User user);
     /**
      * 
      * @param userId
      * @return 
      */
-    public Users getUserById(Integer  userId);
+    public User getUserById(Integer  userId);
     /**
      * 
      * @return 
      */
-    public List<Users> getAllUsers();
+    public List<User> getAllUsers();
     /**
      * 
      * @param user 
      */
-    public void deleteUser(Users user);
+    public void deleteUser(User user);
     
     /************************************************************************/
     

@@ -28,8 +28,8 @@ public class RegistrationServiceImplNGTest {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
-        nid = "1199800078";
-        person = new Person("Umutoniwas", "Daphnet", new Date(), "Female", "1199865656565656", "larsonbitch@gmail.com", "07887777777");
+        nid = "11998000097";
+        person = new Person("Umutoniwase", "Daphnet", new Date(), "Female", "1199865656565656", "larsonbitch@gmail.com", "07887777777");
         socialStatus = new SocialClass("Upper");
         service = new RegistrationServiceImpl();
     }
@@ -37,14 +37,14 @@ public class RegistrationServiceImplNGTest {
     @Test
     public void testGenerateSocialClass() {
         service.createSocialClass(socialStatus);
-        SocialClass social = service.getSocialClassById(1);
+        SocialClass social = service.getSocialClassById((Integer)1);
         Assert.assertEquals(social.getDescription(), "Upper");
     }
 
     @Test
     public void testRegisterNewPerson() {
-        Person newPerson = service.createNewPerson(person);
-        Assert.assertEquals(newPerson.getNid(), "1199865656565656");
+        service.createNewPerson(person);
+        Assert.assertEquals(service.getPersonById(1).getNid(), "1199865656565656");
     }
 
     @Test
