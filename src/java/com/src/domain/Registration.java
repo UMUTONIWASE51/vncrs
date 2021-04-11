@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -23,15 +25,18 @@ private static  final long serialVersionUID = 1L;
     private Integer registrationId;
     private String village;
     private Date registrationDate;
+    @ManyToOne
+    @JoinColumn(name="person_id")
     private Person familyChief;
+    @ManyToOne
+    @JoinColumn(name="class_id")
     private SocialClass socialClass;
     //@OneToMany
     private ArrayList<Person> members = new ArrayList<>();
     //@OneToMany
     private ArrayList<Belonging> belongings = new ArrayList<>();
 
-    public Registration(Integer registrationId, String village, Date registrationDate, Person familyChief, SocialClass socialClass) {
-        this.registrationId = registrationId;
+    public Registration(String village, Date registrationDate, Person familyChief, SocialClass socialClass) {
         this.village = village;
         this.registrationDate = registrationDate;
         this.familyChief = familyChief;
