@@ -4,16 +4,17 @@
     Author     : Planet Innovation
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>LOGIN SUCCESS</title>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
  <div align="center">
   <h1>You have logined successfully</h1>
  </div>
-    </body>
+</body>
 </html>
