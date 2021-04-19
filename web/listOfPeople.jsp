@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>View People</title>
     </head>
     <body>
        <div class="wrapper">
@@ -27,7 +27,7 @@
                     <th>national Id</th>
                     <th>email</th>
                     <th>phone Number</th>
-<!--                    <th> </th>-->
+               <th> Actions </th>
                 </tr>
             </thead>
             <tbody>
@@ -44,12 +44,13 @@
                     <td><%= p.getPersonId() %></td>
                     <td><%= p.getFirstName() %></td>
                     <td><%= p.getLastName() %></td>
+                    <td><%= p.getDob()%></td>
                     <td><%= p.getGender() %></td>
                     <td><%= p.getNid() %></td>
                     <td><%= p.getEmail()  %></td>
                     <td><%= p.getPhone() %></td>
 <!--                    <td><a href="UpdateStudentFormClient.jsp?id=<%=p.getPersonId() %>">Update</a> <a href="Delete_Student_Form.jsp?id=<%=p.getPersonId() %>">Delete</a></td>-->
-                    <td><a href="UpdateStudentFormClient.jsp?id=<%=p.getPersonId() %>">Update</a> <a href="deleteStudent.jsp?id=<%=p.getPersonId() %>">Delete</a></td>
+                    <td><a href="UpdatePerson.jsp?Id=<%=p.getPersonId() %>">Update</a> <a href="deletePerson.jsp?Id=<%=p.getPersonId() %>">Delete</a></td>
 <!--                    <td></td>-->
                     
                     

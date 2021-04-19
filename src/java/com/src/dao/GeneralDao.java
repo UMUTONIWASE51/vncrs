@@ -46,7 +46,7 @@ public class GeneralDao<Y> {
         session.close();
     }
 
-    public Y findById(Integer id) {
+    public Y findById(int id) {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Y obj = (Y) session.get(type, id);

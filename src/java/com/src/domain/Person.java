@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  * Entity that has all information about a physical person
@@ -20,9 +21,10 @@ public class Person implements Serializable{
 private static  final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer personId;
+    private int personId;
     private String firstName;
     private String lastName;
+@Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
     private String gender;
     private String nid;
@@ -40,6 +42,18 @@ private static  final long serialVersionUID = 1L;
      * @param email
      * @param phone
      */
+    
+    public Person(int personId, String firstName, String lastName, Date dob, String gender, String nid, String email, String phone) {
+        this.personId = personId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.gender = gender;
+        this.nid = nid;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public Person(String firstName, String lastName, Date dob, String gender, String nid, String email, String phone) {
         super();
         this.firstName = firstName;
@@ -54,7 +68,7 @@ private static  final long serialVersionUID = 1L;
     /**
      * @return the personId
      */
-    public Integer getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
